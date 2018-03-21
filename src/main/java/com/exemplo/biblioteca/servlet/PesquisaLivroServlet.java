@@ -20,8 +20,7 @@ public class PesquisaLivroServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
         out.println("<html><body>");
-        out.println("<table border=\"1\">");
-        out.println("<tr><th>Titulo</th><th>Autor</th><th>Páginas</th></tr>");
+        out.println("<ul>");
 
         String titulo = req.getParameter("titulo");
         List<Livro> livros;
@@ -31,11 +30,11 @@ public class PesquisaLivroServlet extends HttpServlet {
             livros = dao.buscaLivroPorTitulo(titulo);
         }
         for (Livro livro : livros) {
-            out.println("<tr><td>" + livro.getTitulo() + "</td><th>" + livro.getAutor() + "</td><td>" + livro.getNumPaginas() + "</td></tr>");
+            out.println("<li>" + livro.getTitulo() + "</li>");
         }
 
-        out.println("</table>");
-        out.println("<a href=\"/biblioteca\">Biblioteca</a>");
+        out.println("</ul>");
+        out.println("<a href=\"/bibliotecaComServlet\">Biblioteca</a>");
         out.println("</body></html>");
     }
 

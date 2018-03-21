@@ -35,7 +35,7 @@ public class CriarLivroServlet extends HttpServlet {
         } catch (Exception ex) {
             out.println("<h1>Erro ao adicionar um novo livro</h1>");
         }
-        out.println("<a href=\"/biblioteca\">Biblioteca</a>");
+        out.println("<a href=\"/bibliotecaComServlet\">Biblioteca</a>");
         out.println("</body></html>");
     }
 
