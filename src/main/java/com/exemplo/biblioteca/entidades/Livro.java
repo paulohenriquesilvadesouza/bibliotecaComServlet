@@ -1,4 +1,4 @@
-package com.taleswsouza.biblioteca.entidades;
+package com.exemplo.biblioteca.entidades;
 
 import java.util.Objects;
 
