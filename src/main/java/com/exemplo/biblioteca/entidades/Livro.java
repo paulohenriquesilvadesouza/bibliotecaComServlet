@@ -1,8 +1,17 @@
 package com.exemplo.biblioteca.entidades;
 
+import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class Livro {
+@Entity
+public class Livro implements Serializable {
+    
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String titulo;
     private String autor;
     private Integer numPaginas;
@@ -14,6 +23,10 @@ public class Livro {
         this.titulo = titulo;
         this.autor = autor;
         this.numPaginas = numPaginas;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getTitulo() {
@@ -73,6 +86,4 @@ public class Livro {
     public String toString() {
         return "Livro{" + "titulo=" + titulo + ", autor=" + autor + ", numPaginas=" + numPaginas + '}';
     }
-    
-    
 }

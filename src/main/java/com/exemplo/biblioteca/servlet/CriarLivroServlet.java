@@ -4,7 +4,7 @@ import com.exemplo.biblioteca.dao.LivrosDao;
 import com.exemplo.biblioteca.entidades.Livro;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = "/cria-livro-servlet")
 public class CriarLivroServlet extends HttpServlet {
 
-    private LivrosDao dao = new LivrosDao();
+    @Inject
+    private LivrosDao dao;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

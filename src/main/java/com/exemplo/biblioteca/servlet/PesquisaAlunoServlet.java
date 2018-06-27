@@ -1,7 +1,7 @@
 package com.exemplo.biblioteca.servlet;
 
-import com.exemplo.biblioteca.dao.LivrosDao;
-import com.exemplo.biblioteca.entidades.Livro;
+import com.exemplo.biblioteca.dao.AlunoDAO;
+import com.exemplo.biblioteca.entidades.Aluno;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/pesquisar-livro-servlet")
-public class PesquisaLivroServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/pesquisar-aluno-servlet")
+public class PesquisaAlunoServlet extends HttpServlet {
 
     @Inject
-    private LivrosDao dao;
+    private AlunoDAO dao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,15 +24,15 @@ public class PesquisaLivroServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<ul>");
 
-        String titulo = req.getParameter("titulo");
-        List<Livro> livros;
-        if (titulo == null || titulo.isEmpty()) {
-            livros = dao.buscaTodosLivros();
+        String nome = req.getParameter("nome");
+        List<Aluno> alunos;
+        if (nome == null || nome.isEmpty()) {
+            alunos = dao.buscaTodosAlunos();
         } else {
-            livros = dao.buscaLivroPorTitulo(titulo);
+            alunos = dao.buscaAlunoPorNome(nome);
         }
-        for (Livro livro : livros) {
-            out.println("<li>" + livro.getTitulo() + "</li>");
+        for (Aluno aluno : alunos) {
+            out.println("<li>" + aluno.getNome() + "</li>");
         }
 
         out.println("</ul>");
